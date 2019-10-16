@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Toast UI Grid</title>
+	
+	<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+	<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+	<script type="text/javascript" th:src="@{/js/basic-dummy.js}"></script>
+
+</head>
+<script type="text/javascript">
+/*var gridDataRep = new Array();
+for(var i = 0; i < 1000; i){
+	var jobj = new Object();
+	jobj.name = "name" + i;
+	jobj.artist = "artist" + i;
+	jobj.artist = "type" + i;
+	jobj.artist = "release" + i;
+	jobj.artist = "genre" + i;
+	jobj.artist = "downloadCount" + i;
+	gridDataRep.push(jobj);
+}
+console.log(gridDataRep);*/
+</script>
+<body>
+	 <div id="grid"></div>
+</body>
+<script type="text/javascript">
+const grid = new tui.Grid({
+    el: document.getElementById('grid'),
+    data: gridData,
+    scrollX: false,
+    bodyHeight: 600,
+	rowHeaders: ['rowNum'],
+    columns: [
+      {
+        header: 'Name',
+        name: 'name'
+      },
+      {
+        header: 'Artist',
+        name: 'artist'
+      },
+      {
+        header: 'Type',
+        name: 'type'
+      },
+      {
+        header: 'Release',
+        name: 'release',
+        sortable:true,
+      },
+      {
+        header: 'Genre',
+        name: 'genre'
+      },
+      {
+        header: '다운로드수',
+        name: 'downloadCount'
+      },
+      
+    ],
+    summary: {
+        columnContent: {
+          col1: {
+            template(summary) {
+              return 'row: ' + summary.row;
+            }
+          }
+        }
+      }
+
+  });
+  
+
+</script>
+</html>

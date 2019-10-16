@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link rel="stylesheet" href="/webjars/jqgrid/4.7.0/css/ui.jqgrid.css"/>
+	<script src="/webjars/jquery/3.4.1/jquery.js"></script>
+	<script src="/webjars/jqgrid/4.7.0/js/i18n/grid.locale-kr.js"></script>
+	<script src="/webjars/jqgrid/4.7.0/js/minified/jquery.jqGrid.min.js"></script>
+	
+	<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
+	<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+	<script type="text/javascript" th:src="@{/js/basic-dummy.js}"></script>
+
+</head>
+<script type="text/javascript">
+/*var gridDataRep = new Array();
+for(var i = 0; i < 1000; i){
+	var jobj = new Object();
+	jobj.name = "name" + i;
+	jobj.artist = "artist" + i;
+	jobj.artist = "type" + i;
+	jobj.artist = "release" + i;
+	jobj.artist = "genre" + i;
+	jobj.artist = "downloadCount" + i;
+	gridDataRep.push(jobj);
+}
+console.log(gridDataRep);*/
+</script>
+<body>
+	 <div id="">
+	 <table id="grid"></table>
+	 </div>
+</body>
+<script type="text/javascript">
+jQuery("#grid").jqGrid({
+	datatype : "local",
+   	colNames:['id', 'name', 'artist','type','genre','downloadCount'],
+   	colModel:[
+   		{name:'id',index:'id', width:55 ,sortable:true},
+   		{name:'name',index:'name', width:90},
+   		{name:'artist',index:'artist', width:100},
+   		{name:'type',index:'type', width:80, align:"right"},
+   		{name:'genre',index:'genre', width:80, align:"right"},		
+   		{name:'downloadCount',index:'downloadCount', width:80,align:"right"},		
+   	],
+    viewrecords: true,
+    sortable : true
+});
+
+for(var i=0;i<gridData.length;i++) {
+	$("#grid").jqGrid('addRowData',i+1,gridData[i]);
+}
+</script>
+</html>

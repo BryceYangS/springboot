@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Yang's Map</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   		  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   	  	  crossorigin=""/>
+   	<link rel="stylesheet" th:href="@{/css/leaflet.css}"/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="/webjars/jquery/3.4.1/jquery.js"></script>
+    <script th:src="@{/js/jquery.xml2json.js}"></script>
+ 	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   			integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   			crossorigin=""></script>
+    <!-- leaflet canvas -->
+    <script th:src="@{/js/leaflet/leaflet.canvas-markers.js}"></script>
+    
+	<!-- stn Test Data -->
+	<script th:src="@{/js/map/stnTestData.js}"></script>
+	
+    <!-- drawing Map -->
+    <script th:src="@{/js/map/drawStnMarker.js}"></script>
+	
+	
+	<script type="text/javascript">
+		function onClick(stnKo){
+			document.getElementById('contents').innerHTML = stnKo;
+		};
+		
+		$(document).ready(function(){
+			var baseMap = new BaseMap();
+			baseMap.init("mapid");
+			baseMap.drawBaseMap();
+			baseMap.drawCityDot();
+		});
+	</script>
+</head>
+<body>
+	<h2>Leaflet Test Page</h2>
+	 <div id="mapid"></div>
+	 <div id="contents" style="height:100px; width: 100px"></div>
+</body>
+</html>

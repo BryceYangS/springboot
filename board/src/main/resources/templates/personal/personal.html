@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>영역 및 지점 개인화 테스트 페이지</title>
+
+   	<link rel="stylesheet" th:href="@{/css/leaflet/leaflet.css}"/>
+
+    <script src="/webjars/jquery/3.4.1/jquery.js"></script>
+	<script th:src="@{/js/leaflet/leaflet-src.js}"></script>
+
+	<script th:src="@{/js/leaflet-draw/Leaflet.draw.js}"></script>
+	<script th:src="@{/js/leaflet-draw/Leaflet.Draw.Event.js}"></script>
+	<script th:src="@{/js/leaflet-draw/ext/TouchEvents.js}"></script>
+	<script th:src="@{/js/leaflet-draw/edit/handler/Edit.Poly.js}"></script>
+	<script th:src="@{/js/leaflet-draw/edit/handler/Edit.SimpleShape.js}"></script>
+	<script th:src="@{/js/leaflet-draw/edit/handler/Edit.Rectangle.js}"></script>
+	<script th:src="@{/js/leaflet-draw/edit/handler/Edit.Marker.js}"></script>
+	<script th:src="@{/js/leaflet-draw/edit/handler/Edit.CircleMarker.js}"></script>
+	<script th:src="@{/js/leaflet-draw/edit/handler/Edit.Circle.js}"></script>	
+	
+	<!-- TestData -->
+	<script th:src="@{/js/personal/cityTestData.js}"></script>	
+	
+</head>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$.ajax({
+		url:"/personal/selectIntDstList.do",
+		success:function(data){
+			var intDstSel = document.getElementById('intDstSelect');
+						
+			data.forEach(function(e){
+				var opt = document.createElement('option');
+				opt.setAttribute('value', e.intDstId);
+				opt.innerText = e.intDstName;
+				intDstSel.appendChild(opt);
+			});
+			
+			selectIntDstDetail(data[0].intDstId);
+		}
+	});
+	
+});
+</script>
+<body>
+	<table border="1">
+		<tr>
+			<td><select id="intDstSelect" onchange="javascript:selectIntDstDetail(this.value);"></select></td>
+			<td><input id="intDstName" type="text"></td>
+			<td colspan="4" align="right"><input type="button" value="신규">
+			<input type="button" value="저장">
+			<input type="button" value="지점설정">
+			<input type="button" value="삭제"></td>
+		</tr>
+		<tr>
+			<td>중심위도</td>
+			<td><input id="cntLat" type="text" style="background-color: #e2e2e2;" readonly value="36.846792"></td>
+			<td>중심경도</td>
+			<td><input id="cntLon" type="text" style="background-color: #e2e2e2;" readonly value="127.924211"></td>
+			<td>줌레벨</td>
+			<td><input id="zoomLvl" type="text" style="background-color: #e2e2e2;" readonly value="6"></td>
+		</tr>
+	</table>
+	
+	
+		<div id="map" style="width: 800px; height: 600px; border: 1px solid #ccc"></div>
+	<script th:src="@{/js/personal/setUserArea.js}"></script>
+		
+</body>
+</html>
