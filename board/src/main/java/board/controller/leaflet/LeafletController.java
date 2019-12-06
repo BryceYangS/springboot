@@ -21,11 +21,9 @@ public class LeafletController {
 	
 	@RequestMapping("/leaflet/openLeaflet.do")
 	public String openLeaflet() throws Exception{
-		return "/leaflet/leafletTest";
+		return "/leaflet/leafletFct";
 	}
 
-	
-	
 //	POP	강수확률	%
 //	PTY	강수형태	코드값
 //	R06	6시간 강수량	범주 (1 mm)
@@ -67,4 +65,12 @@ public class LeafletController {
 		
 		return result;
 	}
+	
+	
+	
+	  @RequestMapping("/leaflet/map.do") public String map() throws Exception{
+		  return "/leaflet/map"; 
+	  }
+	 
+	
 }

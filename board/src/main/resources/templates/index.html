@@ -48,8 +48,10 @@
 				//$('#tabUri').val("/board/openBoardWrite.do");
 				//li.innerHTML = "<a href='#' id='" + id + "' onclick='javascript:f_openTab(id);'>게시글 등록</a>";
 				uri = "/board/openBoardWrite.do";
-			}else if(id==="map"){
+			}else if(id==="forecast"){
 				uri = "/leaflet/openLeaflet.do";
+			}else if(id ==="map"){
+				uri = "/leaflet/map.do";	
 			}else if(id==="grid"){
 				uri = "/jqgrid/openJqgrid.do";
 			}else if(id==="personal"){
@@ -103,7 +105,8 @@
 	
 	<a href="#" id="boardList" onclick="f_doSubmit(id);">게시글 목록 조회</a>
 	<a href="#" id="boardWrite" onclick="f_doSubmit(id);">게시글 등록</a>
-	<a href="#" id="map" onclick="f_doSubmit(id);">지도보기</a>
+	<a href="#" id="forecast" onclick="f_doSubmit(id);">동네예보</a>
+	<a href="#" id="map" onclick="f_doSubmit(id);">지도</a>
 	<a href="#" id="grid" onclick="f_doSubmit(id);">jqGrid Prototype</a>
 	<a href="#" id="personal" onclick="f_doSubmit(id);">개인화</a>
 	<a href="#" id="canvas" onclick="f_doSubmit(id);">캔버스</a>
