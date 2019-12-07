@@ -10,8 +10,10 @@
     <script th:src="@{/js/jquery.xml2json.js}"></script>
  	<script th:src="@{/js/leaflet/leaflet-src.js}"></script>
  	
+	<!-- Rbush --> 	
+ 	<script th:src="@{/js/rbush.js}"></script>
     <!-- leaflet CanvasIcon -->
-    <script th:src="@{/js/leaflet/leaflet.canvas-markers.js}"></script>
+    <script th:src="@{/js/leaflet-canvasmarker/leaflet.canvas-markers.js}"></script>
     
     <!-- leaflet WindBarb(바람 일기도 기호 Libaray) -->
     <script th:src="@{/js/leaflet-windbarb/leaflet-windbarb.js}"></script>
@@ -61,11 +63,8 @@
 	<!-- stn Test Data -->
 	<script th:src="@{/js/map/customLayerTestData.js}"></script>
 	
-	<!-- Region Data -->
-	<script th:src="@{/js/map/regionData.js}"></script>
-	
     <!-- drawing Map -->
-    <script th:src="@{/js/map/drawStnMarker_customlayer.js}"></script>
+    <script th:src="@{/js/map/canvasIconTest.js}"></script>
 	
 	
 	<script type="text/javascript">
@@ -76,29 +75,10 @@
 			
 			baseMap = new BaseMap();
 			map = baseMap.init("mapid");
-			//baseMap.drawCityDot();
-			//baseMap.drawWindBarb();
-			submit();
+			baseMap.makeLayer();
 		});
 		
 		
-		function submit(){
-		    var date = new Date();
-		    var year = date.getFullYear();
-		    var month = date.getMonth()+1
-		    var day = date.getDate();
-		    if(month < 10){
-		        month = "0"+month;
-		    }
-		    if(day < 10){
-		        day = "0"+day;
-		    }
-		 
-		    var baseDate = year+""+month+""+day;
-			var baseTime = $('#baseTime').val();
-			
-			baseMap.refresh(baseDate, baseTime);
-		}
 	</script>
 	<style type="text/css">
 	
@@ -115,29 +95,7 @@
 	</style>
 </head>
 <body>
-	<span>동네예보</span>
-	<table border="1">
-		<tbody>
-			<tr>
-				<td>Today</td>
-				<td><input id="date" type="text" readonly value=""></td>
-				<td>시간</td>
-				<td>
-					<select id="baseTime" name="baseTime" onchange="submit();">
-						<option value="0200" selected>06시</option>
-						<option value="0500">09시</option>
-						<option value="0800">12시</option>
-						<option value="1100">15시</option>
-						<option value="1400">18시</option>
-						<option value="1700">21시</option>
-						<option value="2000">24시</option>
-						<option value="2300">익일03시</option>
-					</select>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	
+	<span>Leaflet Test</span>
 	 <div id="mapid" style="height:700px; width:700px;"></div>
 </body>
 </html>
