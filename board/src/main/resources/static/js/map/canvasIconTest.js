@@ -151,8 +151,9 @@ var BaseMap = (function(){
 					self.canvasLayer.addMarkers(self.markers6);
 					break;
 				}
-				self.canvasLayer.addOnClickListener(function(){
+				self.canvasLayer.addOnClickListener(function(t,e){
 					alert("zoomLvl " + zoomLvl + " click!!");
+					console.log("T",t,"e",e);
 				});
 			},
 			
